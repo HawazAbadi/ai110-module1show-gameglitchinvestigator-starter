@@ -33,20 +33,28 @@ It wrote the code, ran away, and now the game is unplayable.
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. **Start the app** with `.venv/bin/python -m streamlit run app.py` and open `http://localhost:8501` in the browser.
+2. **Pick a difficulty** in the sidebar (e.g. Normal), which sets the number range (1–100) and the number of attempts allowed.
+3. **Make a guess** by typing a number into the input box and clicking **Submit Guess 🚀**. The game replies with a hint — **📉 Go LOWER!** if the guess was too high, or **📈 Go HIGHER!** if it was too low.
+4. **Follow the hints** to narrow in on the secret. Open the **Developer Debug Info** expander to confirm the secret now stays the same on every submit (it no longer changes) and the hints point the correct direction.
+5. **Win the game** by guessing the secret — the app shows 🎉 balloons, reveals the secret, and displays the final score.
+6. **Click New Game 🔁** to reset the secret, score, attempts, and history, then play again at any difficulty.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+$ .venv/bin/python -m pytest tests/ -v
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0
+collected 3 items
+
+tests/test_game_logic.py::test_winning_guess PASSED                      [ 33%]
+tests/test_game_logic.py::test_guess_too_high PASSED                     [ 66%]
+tests/test_game_logic.py::test_guess_too_low PASSED                      [100%]
+
+============================== 3 passed in 0.01s ===============================
 ```
 
 ## 🚀 Stretch Features
